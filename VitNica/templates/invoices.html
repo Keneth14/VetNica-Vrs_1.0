@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VetNica - Facturación</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+
+<body class="container mt-4">
+
+<!-- BOTÓN INICIO -->
+<div class="container mt-3">
+    <a href="/" class="btn btn-secondary mb-3">
+        <i class="bi bi-house-door"></i> Inicio
+    </a>
+</div>
+
+<h2 class="text-center mb-4">Facturación</h2>
+
+<!-- FORMULARIO -->
+<div class="card p-3 mb-4 shadow">
+    <h4>Nueva Factura</h4>
+
+    <form method="POST" action="/add_invoice">
+
+        <input class="form-control mb-2" name="client_name" placeholder="Nombre del cliente" required>
+
+        <input class="form-control mb-2" name="animal_id" placeholder="ID del Animal (opcional)">
+
+        <textarea class="form-control mb-2" name="description" placeholder="Descripción del servicio"></textarea>
+
+        <input type="number" step="0.01" class="form-control mb-2" name="price" placeholder="Precio" required>
+
+        <button class="btn btn-success w-100">Crear Factura</button>
+    </form>
+</div>
+
+<!-- TABLA -->
+<div class="card p-3 shadow">
+
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Animal ID</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for i in invoices %}
+        <tr>
+            <td>{{ i.id }}</td>
+            <td>{{ i.client_name }}</td>
+            <td>{{ i.animal_id }}</td>
+            <td>{{ i.description }}</td>
+            <td>C$ {{ i.price }}</td>
+            <td>{{ i.date }}</td>
+
+            <td>
+                <a href="/invoice_ticket/{{ i.id }}" class="btn btn-primary btn-sm">
+                    🧾 Imprimir
+                </a>
+            </td>
+
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+<!-- Bootstrap Icons (si no lo tienes ya en el proyecto) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<footer class="text-center mt-5 py-3 border-top text-muted">
+    <small>
+        <i class="bi bi-shield-check"></i> VetNica © 2026 - Sistema de Gestión Veterinaria <br>
+        <i class="bi bi-building"></i> Desarrollado por Best Technology <br>
+        <i class="bi bi-c-circle"></i> Todos los derechos reservados
+    </small>
+</footer>
+
+</body>
+</html>

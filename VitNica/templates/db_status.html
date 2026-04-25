@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>VetNica - Estado BD</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS del sistema -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <!-- Tipografía -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- NAVBAR (igual que index) -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <span class="navbar-brand">VetNica</span>
+    </div>
+</nav>
+
+<div class="container mt-5">
+
+    <!-- TÍTULO -->
+    <div class="text-center mb-5">
+        <h1>Estado del Sistema</h1>
+        <p class="text-muted">Monitoreo de conexión a base de datos</p>
+    </div>
+
+    <!-- CARD PRINCIPAL -->
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <div class="card card-option p-4 text-center shadow-sm">
+
+                <h5>Base de Datos SQL Server</h5>
+                <p class="text-muted">Estado actual de conexión del sistema</p>
+
+                <!-- ESTADO -->
+                <h2 style="color: {{color}}; font-weight: bold;">
+                    {{status}}
+                </h2>
+
+                <hr>
+
+                <p class="text-muted">
+                    Si el estado es “Conectado”, el sistema está funcionando correctamente.
+                </p>
+
+                <a href="/" class="btn btn-custom w-100 mt-2">
+                    Volver al inicio
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Bootstrap Icons (si no lo tienes ya en el proyecto) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<footer class="text-center mt-5 py-3 border-top text-muted">
+    <small>
+        <i class="bi bi-shield-check"></i> VetNica © 2026 - Sistema de Gestión Veterinaria <br>
+        <i class="bi bi-building"></i> Desarrollado por Best Technology <br>
+        <i class="bi bi-c-circle"></i> Todos los derechos reservados
+    </small>
+</footer>
+
+</body>
+</html>

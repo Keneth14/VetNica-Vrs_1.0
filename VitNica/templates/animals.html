@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>VetNica - Animales</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- BOTÓN VOLVER -->
+<div class="container mt-3">
+    <a href="/" class="btn btn-back">
+        <i class="bi bi-arrow-left"></i> Inicio
+    </a>
+</div>
+
+<div class="container mt-4">
+
+    <!-- TITULO -->
+    <h2 class="text-center mb-4 fw-semibold">
+        <i class="bi bi-egg-fried me-2"></i>
+        Gestión de Animales
+    </h2>
+
+    <!-- FORMULARIO -->
+    <div class="card card-option p-4 mb-4">
+
+        <h5 class="mb-3">
+            <i class="bi bi-plus-circle me-2"></i>
+            Registrar Animal
+        </h5>
+
+        <form method="POST" action="/add_animal">
+
+            <input class="form-control mb-2" name="name" placeholder="Nombre del animal" required>
+
+            <input class="form-control mb-2" name="type" placeholder="Tipo (Perro, Gato...)" required>
+
+            <!-- EDAD -->
+            <div class="row mb-2">
+                <div class="col">
+                    <input type="number" class="form-control" name="age" placeholder="Edad" min="0" required>
+                </div>
+
+                <div class="col">
+                    <select class="form-control" name="age_type" required>
+                        <option value="">Unidad</option>
+                        <option value="Meses">Meses</option>
+                        <option value="Años">Años</option>
+                    </select>
+                </div>
+            </div>
+
+            <input class="form-control mb-3" name="owner" placeholder="Nombre del dueño" required>
+
+            <button class="btn btn-custom w-100">
+                <i class="bi bi-check-circle me-1"></i>
+                Agregar Animal
+            </button>
+        </form>
+    </div>
+
+    <!-- TABLA -->
+    <div class="card card-option p-4">
+
+        <h5 class="mb-3">
+            <i class="bi bi-list-ul me-2"></i>
+            Lista de Animales
+        </h5>
+
+        <div class="table-responsive">
+            <table class="table align-middle">
+
+                <thead class="table-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Edad</th>
+                        <th>Dueño</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                {% for a in animals %}
+                <tr>
+                    <td class="text-muted fw-semibold">{{ a.id }}</td>
+                    <td>{{ a.name }}</td>
+                    <td>{{ a.type }}</td>
+                    <td>{{ a.age }} {{ a.age_type }}</td>
+                    <td>{{ a.owner }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<!-- Bootstrap Icons (si no lo tienes ya en el proyecto) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<footer class="text-center mt-5 py-3 border-top text-muted">
+    <small>
+        <i class="bi bi-shield-check"></i> VetNica © 2026 - Sistema de Gestión Veterinaria <br>
+        <i class="bi bi-building"></i> Desarrollado por Best Technology <br>
+        <i class="bi bi-c-circle"></i> Todos los derechos reservados
+    </small>
+</footer>
+
+</body>
+</html>
